@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs/CodeAnalyzeWPF/v15/Server/sqlite3
+/CodeAnalyzeWPF/bin/Debug
+/CodeAnalyzeWPF/obj
+/.vs/CodeAnalyzeWPF/v15
