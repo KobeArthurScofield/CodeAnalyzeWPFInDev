@@ -1,0 +1,126 @@
+﻿<Window x:Class="CodeAnalyzeWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CodeAnalyzeWPF"
+        mc:Ignorable="d"
+        Title="测试工具客户端beta" Height="835" Width="1098" ResizeMode="CanMinimize" Background="#FFFAFAFA">
+    <Window.Resources>
+        <Style x:Key="ClipGrid" TargetType="{x:Type Grid}">
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="366*"/>
+            <ColumnDefinition Width="23*"/>
+            <ColumnDefinition Width="703*"/>
+        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Left" Height="804" VerticalAlignment="Top" Width="48" Background="#FF535353">
+            <Image x:Name="buttTest" HorizontalAlignment="Left" Height="38" VerticalAlignment="Bottom" Width="38" Margin="5,0,0,745" Panel.ZIndex="1" Stretch="UniformToFill" Source="Resources/test.png"/>
+            <Image x:Name="buttUser" HorizontalAlignment="Left" Height="38" VerticalAlignment="Bottom" Width="38" Margin="5,0,0,642" Panel.ZIndex="1" Stretch="UniformToFill" Source="Resources/person.png"/>
+            <Image x:Name="buttSetting" HorizontalAlignment="Left" Height="38" VerticalAlignment="Bottom" Width="38" Margin="5,0,0,522" Panel.ZIndex="1" Stretch="UniformToFill" Source="Resources/setting.png"/>
+
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="1200" Margin="48,0,0,-394.4" VerticalAlignment="Top" Width="314">
+            <ScrollViewer HorizontalAlignment="Left" Height="804" VerticalAlignment="Top" Width="314" VerticalScrollBarVisibility="Auto">
+                <Grid MinWidth="314" MinHeight="1000">
+                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Background="#FFF0F0F0">
+                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
+                        <TextBlock x:Name="DataTitle" HorizontalAlignment="Left" Height="29" Margin="9,23,0,0" TextWrapping="Wrap" Text="int函数检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
+                        <TextBlock x:Name="DataUpd" HorizontalAlignment="Left" Height="25" Margin="9,79,0,0" TextWrapping="Wrap" Text="2019/3/22 20:05:41" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,120,0,0">
+                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
+                        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Height="29" Margin="9,22,0,0" TextWrapping="Wrap" Text="Python函数检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
+                        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Height="25" Margin="10,76,0,0" TextWrapping="Wrap" Text="2019/2/22 09:30:55" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,240,0,0" Style="{DynamicResource ClipGrid}">
+                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
+                        <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Height="29" Margin="9,26,0,0" TextWrapping="Wrap" Text="python函数检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
+                        <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Height="25" Margin="10,76,0,0" TextWrapping="Wrap" Text="2019/2/18 19:30:50" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,360,0,0">
+                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
+                        <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Height="29" Margin="10,26,0,0" TextWrapping="Wrap" Text="C# int函数检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
+                        <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Height="25" Margin="10,76,0,0" TextWrapping="Wrap" Text="2019/2/15 06:30:47" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,480,0,0">
+                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
+                        <TextBlock x:Name="textBlock8" HorizontalAlignment="Left" Height="29" Margin="9,22,0,0" TextWrapping="Wrap" Text="C++ int函数检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
+                        <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Height="25" Margin="9,75,0,0" TextWrapping="Wrap" Text="2019/2/11 16:40:17" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,600,0,0">
+                        <TextBlock x:Name="textBlock10" HorizontalAlignment="Left" Height="29" Margin="9,19,0,0" TextWrapping="Wrap" Text="C语言int函数检测" VerticalAlignment="Top" Width="295" FontSize="24"/>
+                        <TextBlock x:Name="textBlock11" HorizontalAlignment="Left" Height="25" Margin="10,76,0,0" TextWrapping="Wrap" Text="2019/2/11 16:40:10" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
+                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,720,0,0">
+                        <TextBlock x:Name="textBlock12" HorizontalAlignment="Left" Height="29" Margin="9,17,0,0" TextWrapping="Wrap" Text="C语言main函数检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
+                        <TextBlock x:Name="textBlock13" HorizontalAlignment="Left" Height="25" Margin="9,65,0,0" TextWrapping="Wrap" Text="2019/2/08 14:40:30" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
+                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,840,0,0">
+                        <TextBlock x:Name="textBlock14" HorizontalAlignment="Left" Height="29" Margin="9,17,0,0" TextWrapping="Wrap" Text="C++ main函数检测" VerticalAlignment="Top" Width="295" FontSize="24"/>
+                        <TextBlock x:Name="textBlock15" HorizontalAlignment="Left" Height="25" Margin="9,66,0,0" TextWrapping="Wrap" Text="2019/2/07 06:30:17" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
+                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,960,0,0">
+                        <TextBlock x:Name="textBlock16" HorizontalAlignment="Left" Height="29" Margin="9,17,0,0" TextWrapping="Wrap" Text="C# Main函数检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
+                        <TextBlock x:Name="textBlock17" HorizontalAlignment="Left" Height="25" Margin="9,66,0,0" TextWrapping="Wrap" Text="2019/2/06 12:10:17" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
+                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,1080,0,0">
+                        <TextBlock x:Name="textBlock18" HorizontalAlignment="Left" Height="29" Margin="9,17,0,0" TextWrapping="Wrap" Text="C++ wrap函数检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
+                        <TextBlock x:Name="textBlock19" HorizontalAlignment="Left" Height="25" Margin="9,66,0,0" TextWrapping="Wrap" Text="2019/2/05 11:50:10" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
+                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,1200,0,0">
+                        <TextBlock x:Name="textBlock20" HorizontalAlignment="Left" Height="29" Margin="9,17,0,0" TextWrapping="Wrap" Text="C++ mian函数重复检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
+                        <TextBlock x:Name="textBlock21" HorizontalAlignment="Left" Height="25" Margin="9,66,0,0" TextWrapping="Wrap" Text="2019/2/03 10:00:10" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
+                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="804" Margin="362,0,0,0" VerticalAlignment="Top" Width="730" Background="White" Grid.ColumnSpan="3">
+            <Grid x:Name="EditPage" Height="804" Width="730">
+                <Image x:Name="LineAdvr" HorizontalAlignment="Left" Height="1" VerticalAlignment="Top" Width="730" Source="Resources/img_line_01.png" Stretch="UniformToFill"/>
+                <Image x:Name="ButtMerge" HorizontalAlignment="Left" Height="26" Margin="15,26,0,0" VerticalAlignment="Top" Width="26" Stretch="UniformToFill" Source="Resources/merge.png"/>
+                <TextBlock x:Name="BlockTitle_Hint" HorizontalAlignment="Left" Height="32" Margin="51,23,0,0" VerticalAlignment="Top" Width="657" FontSize="22" TextTrimming="CharacterEllipsis" Cursor="IBeam" MouseDown="EditTitle" Text="int函数检测" Foreground="#FF7A7A7A" Panel.ZIndex="1"/>
+                <TextBlock x:Name="BlockTitle" HorizontalAlignment="Left" Height="32" Margin="51,23,0,0" VerticalAlignment="Top" Width="657" FontSize="22" TextTrimming="CharacterEllipsis" Cursor="IBeam" MouseDown="EditTitle" Panel.ZIndex="2"/>
+                <TextBox x:Name="BlockTitleEdit" HorizontalAlignment="Left" Height="32" Margin="51,23,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="657" FontSize="22" Panel.ZIndex="3" LostFocus="TitleEditCompleted" TextChanged="BlockTitleEdit_TextChanged" Background="White" Visibility="Hidden" KeyUp="KeyChecker"/>
+                <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="625" Margin="15,72,0,0" Stroke="Black" VerticalAlignment="Top" Width="693"/>
+                <TextBox x:Name="CodeContent_Hint" HorizontalAlignment="Left" Height="625" Margin="15,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="693" AutomationProperties.HelpText="Text here" Panel.ZIndex="1" Foreground="#FFA0A0A0" Text="请输入你的测试代码" Background="{x:Null}" FontSize="20"/>
+                <TextBox x:Name="CodeContent" HorizontalAlignment="Left" Height="625" Margin="15,72,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="693" AutomationProperties.HelpText="Text here" Panel.ZIndex="2" Background="{x:Null}" TextChanged="CodeContent_TextChanged" LostFocus="EatenUp" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" FontSize="20"/>
+                <Button x:Name="buttLoad" Content="上传" HorizontalAlignment="Left" Height="54" Margin="15,724,0,0" VerticalAlignment="Top" Width="190" FontSize="26" Click="ButtLoad_Click" BorderBrush="{x:Null}" Foreground="White">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Resources/btn_upload_bg.png" Stretch="UniformToFill"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="buttAnalyze" Content="分析" HorizontalAlignment="Left" Height="54" Margin="518,724,0,0" VerticalAlignment="Top" Width="190" FontSize="26" AutomationProperties.AccessKey="A" BorderBrush="{x:Null}" Foreground="White" Click="ButtAnalyze_Click">
+                    <Button.Background>
+                        <ImageBrush Stretch="UniformToFill" ImageSource="Resources/btn_upload_bg.png"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+            <Grid x:Name="ResultPage" Height="804" Width="730">
+                <TextBlock x:Name="Header" HorizontalAlignment="Left" Height="32" Margin="51,23,0,0" VerticalAlignment="Top" Width="146" FontSize="22" TextTrimming="CharacterEllipsis" Text="分析结果"/>
+                <TextBlock x:Name="ProjectName" HorizontalAlignment="Left" Height="32" Margin="202,23,0,0" VerticalAlignment="Top" Width="506" FontSize="22" TextTrimming="CharacterEllipsis" Panel.ZIndex="2"/>
+                <Image x:Name="CodePlay" HorizontalAlignment="Left" Height="538" Margin="15,123,0,0" VerticalAlignment="Top" Width="314" Stretch="UniformToFill"/>
+                <Image x:Name="AnalyzeRzlt" HorizontalAlignment="Left" Height="538" Margin="394,123,0,0" VerticalAlignment="Top" Width="314" Stretch="UniformToFill"/>
+                <Button x:Name="buttBack" Content="返回" HorizontalAlignment="Left" Height="54" Margin="15,724,0,0" VerticalAlignment="Top" Width="190" FontSize="26" BorderBrush="{x:Null}" Foreground="White">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Resources/btn_upload_bg.png" Stretch="UniformToFill"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="buttDownload" Content="下载" HorizontalAlignment="Left" Height="54" Margin="518,724,0,0" VerticalAlignment="Top" Width="190" FontSize="26" AutomationProperties.AccessKey="A" BorderBrush="{x:Null}" Foreground="White" Click="ButtDownload_Click">
+                    <Button.Background>
+                        <ImageBrush Stretch="UniformToFill" ImageSource="Resources/btn_upload_bg.png"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+            <!--Image x:Name="image2" Grid.Column="2" HorizontalAlignment="Left" Height="100" Margin="857.467,-59,-254.8,0" VerticalAlignment="Top" Width="100"/-->
+        </Grid>
+    </Grid>
+</Window>

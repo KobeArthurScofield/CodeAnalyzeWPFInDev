@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,10 +12,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+/*
+// Dusted
+public struct DataBackbone
+{
+    DataBackbone *prev;
+    String name;
+    DateTime timeset;
+    UInt32 indexcode;
+    DataBackbone* next;
+};
+*/
+
 namespace CodeAnalyzeWPF
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -28,18 +39,16 @@ namespace CodeAnalyzeWPF
                 BlockTitle_Hint.Visibility = Visibility.Hidden;
             else
                 BlockTitle_Hint.Visibility = Visibility.Visible;
-			EditPage.Visibility = Visibility.Visible;
-			ResultPage.Visibility = Visibility.Hidden;
-        }
-
-        private void Image_MouseButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            //BlockTitle.Text = CodeContent.Text; //For testing purpose
+            //EditPage.Visibility = Visibility.Visible;
+            //ResultPage.Visibility = Visibility.Hidden;
+            EditPage.Visibility = Visibility.Hidden;
+            ResultPage.Visibility = Visibility.Visible;
+            CodePlay.Source = new BitmapImage(new Uri(@"Resources/RZRC/1_a.jpg", UriKind.Relative));
         }
 
         private void ButtLoad_Click(object sender, RoutedEventArgs e)
         {
-            if(CodeContent.Text!=null)
+            if (CodeContent.Text != null)
             {
                 if(MessageBox.Show("是否要覆盖当前内容？", "覆盖确认", MessageBoxButton.YesNo, MessageBoxImage.Question)!=MessageBoxResult.No)
                 {
@@ -48,7 +57,7 @@ namespace CodeAnalyzeWPF
                     openFileDialog.Filter = "文本文件|*.txt|所有文件|*.*";
                     openFileDialog.RestoreDirectory = true;
                     openFileDialog.FilterIndex = 1;
-                    if (openFileDialog.ShowDialog()==true)
+                    if (openFileDialog.ShowDialog() == true)
                     {
                         string fName = openFileDialog.FileName;
                         string text = System.IO.File.ReadAllText(fName);
@@ -105,16 +114,24 @@ namespace CodeAnalyzeWPF
                 TitleEditCompleted(sender, e);
         }
 
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			ResultPage.Visibility = Visibility.Hidden;
-			EditPage.Visibility = Visibility.Visible;
-		}
+        private void ButtAnalyze_Click(object sender, RoutedEventArgs e)
+        {
+            EditPage.Visibility = Visibility.Hidden;
+            ResultPage.Visibility = Visibility.Visible;
+        }
 
-		private void ButtAnalyze_Click(object sender, RoutedEventArgs e)
-		{
-			EditPage.Visibility = Visibility.Hidden;
-			ResultPage.Visibility = Visibility.Visible;
-		}
-	}
+        private void ButtBack_Click(object sender, RoutedEventArgs e)
+        {
+            ResultPage.Visibility = Visibility.Hidden;
+            EditPage.Visibility = Visibility.Visible;
+        }
+
+        private void ButtDownload_Click(object sender, RoutedEventArgs e)
+        {
+            // Unknown Seq
+        }
+
+        // WARNING
+        // Codes below is not a good sample for a REAL program!
+    }
 }
