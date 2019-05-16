@@ -250,7 +250,13 @@
             </Grid>
             <Grid x:Name="LoginManager" Style="{StaticResource WorkArea}">
                 <TextBlock Margin="394,60,394,714" TextAlignment="Center" Height="32" Width="256" FontSize="28" Text="客户端更新日志" Panel.ZIndex="3"/>
-                <RichTextBox x:Name="UPDINF" Margin="73,132,73,131" Height="543" Width="898" FontSize="24" Panel.ZIndex="3"/>
+                <RichTextBox x:Name="UPDINF" Margin="73,132,73,131" Height="543" Width="898" FontSize="24" Foreground="#FF666666" Panel.ZIndex="3">
+                    <FlowDocument>
+                        <Paragraph Foreground="#FF000000">我不是</Paragraph>
+                        <Paragraph>我没有</Paragraph>
+                        <Paragraph>别瞎说</Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
                 <Button x:Name="ButtExit" Margin="427,724,427,28" Height="54" Width="190" Content="退出" FontSize="26" Background="#FFFF3300" Foreground="#FFFFFFFF" Panel.ZIndex="3" Click="ButtExit_Click"/>
             </Grid>
             <Grid x:Name="SettingManager" Style="{StaticResource WorkArea}">

@@ -175,4 +175,79 @@
   <data name="testmask" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\testmask.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="PreloadTime01" xml:space="preserve">
+    <value>2018-12-31 00:00:24</value>
+  </data>
+  <data name="PreloadTime02" xml:space="preserve">
+    <value>2019-01-18 00:00:50</value>
+  </data>
+  <data name="PreloadTime03" xml:space="preserve">
+    <value>2018-12-14 08:00:00</value>
+  </data>
+  <data name="PreloadTime04" xml:space="preserve">
+    <value>2019-02-01 00:05:00</value>
+  </data>
+  <data name="PreloadTime05" xml:space="preserve">
+    <value>2019-01-05 00:08:00</value>
+  </data>
+  <data name="PreloadTime06" xml:space="preserve">
+    <value>2018-11-29 09:00:00</value>
+  </data>
+  <data name="PreloadTime07" xml:space="preserve">
+    <value>2019-01-01 00:00:00</value>
+  </data>
+  <data name="PreloadTime08" xml:space="preserve">
+    <value>2019-01-01 00:20:00</value>
+  </data>
+  <data name="PreloadTime09" xml:space="preserve">
+    <value>2019-01-01 00:41:00</value>
+  </data>
+  <data name="PreloadTime10" xml:space="preserve">
+    <value>2019-01-01 05:05:00</value>
+  </data>
+  <data name="PreloadTime11" xml:space="preserve">
+    <value>2019-01-01 12:00:00</value>
+  </data>
+  <data name="PreloadTitle01" xml:space="preserve">
+    <value>PHP Analyse</value>
+  </data>
+  <data name="PreloadTitle02" xml:space="preserve">
+    <value>C Analtse</value>
+  </data>
+  <data name="PreloadTitle03" xml:space="preserve">
+    <value>C++ Analyse</value>
+  </data>
+  <data name="PreloadTitle04" xml:space="preserve">
+    <value>Ruby Analyse</value>
+  </data>
+  <data name="PreloadTitle05" xml:space="preserve">
+    <value>Pythin Analyse</value>
+  </data>
+  <data name="PreloadTitle06" xml:space="preserve">
+    <value>C# Analyse</value>
+  </data>
+  <data name="PreloadTitle07" xml:space="preserve">
+    <value>JavaScript Analyse</value>
+  </data>
+  <data name="PreloadTitle08" xml:space="preserve">
+    <value>BOCOL Analyse</value>
+  </data>
+  <data name="PreloadTitle09" xml:space="preserve">
+    <value>PowerShell Analyse</value>
+  </data>
+  <data name="PreloadTitle10" xml:space="preserve">
+    <value>Bash Analyse</value>
+  </data>
+  <data name="PreloadTitle11" xml:space="preserve">
+    <value>Haskell Analyse</value>
+  </data>
+  <data name="UPD01" xml:space="preserve">
+    <value>我不是</value>
+  </data>
+  <data name="UPD02" xml:space="preserve">
+    <value>我没有</value>
+  </data>
+  <data name="UPD03" xml:space="preserve">
+    <value>别瞎说</value>
+  </data>
 </root>

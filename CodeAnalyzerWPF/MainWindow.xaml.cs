@@ -118,7 +118,7 @@ namespace CodeAnalyzeWPF
                 itemlist[i].indexCode = i + 1;
                 itemlist[i].title = preloadData.GetString("PreloadTitle" + lognum);
                 itemlist[i].modifyTime = DateTime.ParseExact(preloadData.GetString("PreloadTime" + lognum), "yyyy-MM-dd HH:mm:ss", null);
-                itemlist[i].imgId = Convert.ToUInt32((new Random()).Next(1, 5));
+                itemlist[i].imgId = 0xFFFFFFFF;
                 itemlist[i].analyzed = false;
             }
         }
@@ -127,7 +127,7 @@ namespace CodeAnalyzeWPF
         {
             int physicsindex;
             for (physicsindex = 0; physicsindex < ttal; physicsindex++)
-                if (list[physicsindex].elementHash == itemhash)
+                if ((list[physicsindex].elementHash == itemhash) && (list[physicsindex].indexCode != 0xFFFFFFFF))
                     break;
             if (physicsindex == ttal)
                 physicsindex = -1;
@@ -144,6 +144,7 @@ namespace CodeAnalyzeWPF
                     list[i].content = itemcontent;
                     list[i].modifyTime = mdt;
                     list[i].indexCode = 0;
+                    list[i].analyzed = false;
                     if (hash != 0)
                         list[ReadItemIndexInStorage(list, hash)].indexCode = 0xFFFFFFFF;
                     break;
@@ -166,7 +167,7 @@ namespace CodeAnalyzeWPF
         private MISCBone MISC = new MISCBone();
         private SolidColorBrush hovercolour = new SolidColorBrush(Color.FromArgb(0xFF, 0xDB, 0xD9, 0xD8));   //Hovering Colour
         private SolidColorBrush selectedcolour = new SolidColorBrush(Color.FromArgb(0xFF, 0xC3, 0xC3, 0xC4));//Selected Colour
-        private SolidColorBrush unselectcolour = new SolidColorBrush(Color.FromArgb(0x00, 0xFF, 0xFF, 0xFF));//Unselected Colour
+        private SolidColorBrush unselectcolour = new SolidColorBrush(Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF));//Unselected Colour
         public Backbone.ElementLog[] itemlist = new Backbone.ElementLog[Backbone.ttal];
         private Int64 currentListHash = -1;
         private bool edited = false;
@@ -202,8 +203,6 @@ namespace CodeAnalyzeWPF
             Paragraph Upd01 = new Paragraph();
             Paragraph Upd02 = new Paragraph();
             Paragraph Upd03 = new Paragraph();
-            //Upd01. = Properties.Resources.UPD01;
-
         }
 
         private void ProjectListFlush()
@@ -283,7 +282,7 @@ namespace CodeAnalyzeWPF
             }
             if (PageTurner(0))
             {
-                if (listindex != 0xFFFFFFFF)
+                if ((listindex != 0xFFFFFFFF) && (currentListHash != 0))
                     (FindName("tem" + Bone.EnumCodingToString(listindex, 2)) as Grid).Background = unselectcolour;
                 newitem.Background = selectedcolour;
                 BlockTitleEdit.Visibility = Visibility.Visible;
@@ -303,12 +302,12 @@ namespace CodeAnalyzeWPF
             scitemidx = Bone.ReadItemIndexInStorage(itemlist, sender.GetHashCode());
             if (PageTurner(sender.GetHashCode()))
             {
-                if (listindex != 0xFFFFFFFF)
+                if ((listindex != 0xFFFFFFFF) && (currentListHash != 0))
                     (FindName("tem" + Bone.EnumCodingToString(listindex, 2)) as Grid).Background = unselectcolour;
                 if (currentListHash == 0)
                     newitem.Background = unselectcolour;
                 listindex = itemlist[scitemidx].indexCode;
-                (FindName("tem" + Bone.EnumCodingToString(listindex, 2)) as Grid).Background = selectedcolour;
+                (sender as Grid).Background = selectedcolour;
                 currentListHash = itemlist[scitemidx].elementHash;
             }
         }
@@ -325,10 +324,9 @@ namespace CodeAnalyzeWPF
                 if (currentListHash == 0)
                     newitem.Background = unselectcolour;
                 else
-                    (FindName("tem" + Bone.EnumCodingToString(Convert.ToUInt32(Bone.ReadItemIndexInStorage(itemlist, currentListHash)) + 1, 2)) as Grid).Background = unselectcolour;
+                    (FindName("tem" + Bone.EnumCodingToString(itemlist[Bone.ReadItemIndexInStorage(itemlist, currentListHash)].indexCode, 2)) as Grid).Background = unselectcolour;
                 Bone.SaveItem(itemlist, BlockTitleEdit.Text, CodeContent.Text, DateTime.UtcNow, currentListHash);
-                if (currentListHash != 0)
-                    itemlist[Bone.ReadItemIndexInStorage(itemlist, currentListHash)].indexCode = 0xFFFFFFFF;
+                BlockTitle.Text = BlockTitleEdit.Text;
                 BlockTitleEdit.Visibility = Visibility.Collapsed;
                 Bone.ListUpdate(itemlist);
                 ProjectListFlush();
@@ -378,6 +376,11 @@ namespace CodeAnalyzeWPF
         private void ButtAnalyze(object sender, RoutedEventArgs e)
         {
             int cursor = Bone.ReadItemIndexInStorage(itemlist, currentListHash);
+            if (!itemlist[cursor].analyzed)
+            {
+                itemlist[cursor].imgId = Convert.ToUInt32((new Random()).Next(1, 6));
+                itemlist[cursor].analyzed = true;
+            }
             switch(itemlist[cursor].imgId)
             {
                 case 1:
@@ -423,6 +426,7 @@ namespace CodeAnalyzeWPF
         private void StartTitleEdit(object sender, MouseButtonEventArgs e)
         {
             BlockTitleEdit.Visibility = Visibility.Visible;
+            BlockTitleEdit.Focus();
         }
 
         private void ButtBack_Click(object sender, RoutedEventArgs e)
@@ -435,7 +439,14 @@ namespace CodeAnalyzeWPF
         {
             XCE.UnderConstruction();
             Microsoft.Win32.SaveFileDialog savediag = new Microsoft.Win32.SaveFileDialog();
-
+            savediag.Filter = "JPEG File|*.jpg";
+            savediag.RestoreDirectory = false;
+            if (savediag.ShowDialog().Value)
+            {
+                //string filepath1 = savediag.FileName;
+                //string filepath2 = (filepath1.Split('.'))[0] + "_Flow.jpg";
+                XCE.UnderConstruction();
+            }
         }
 
         private void ButtExit_Click(object sender, RoutedEventArgs e)

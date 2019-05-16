@@ -211,6 +211,204 @@ namespace CodeAnalyzeWPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 2018-12-31 00:00:24.
+        /// </summary>
+        internal static string PreloadTime01 {
+            get {
+                return ResourceManager.GetString("PreloadTime01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2019-01-18 00:00:50.
+        /// </summary>
+        internal static string PreloadTime02 {
+            get {
+                return ResourceManager.GetString("PreloadTime02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2018-12-14 08:00:00.
+        /// </summary>
+        internal static string PreloadTime03 {
+            get {
+                return ResourceManager.GetString("PreloadTime03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2019-02-01 00:05:00.
+        /// </summary>
+        internal static string PreloadTime04 {
+            get {
+                return ResourceManager.GetString("PreloadTime04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2019-01-05 00:08:00.
+        /// </summary>
+        internal static string PreloadTime05 {
+            get {
+                return ResourceManager.GetString("PreloadTime05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2018-11-29 09:00:00.
+        /// </summary>
+        internal static string PreloadTime06 {
+            get {
+                return ResourceManager.GetString("PreloadTime06", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2019-01-01 00:00:00.
+        /// </summary>
+        internal static string PreloadTime07 {
+            get {
+                return ResourceManager.GetString("PreloadTime07", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2019-01-01 00:20:00.
+        /// </summary>
+        internal static string PreloadTime08 {
+            get {
+                return ResourceManager.GetString("PreloadTime08", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2019-01-01 00:41:00.
+        /// </summary>
+        internal static string PreloadTime09 {
+            get {
+                return ResourceManager.GetString("PreloadTime09", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2019-01-01 05:05:00.
+        /// </summary>
+        internal static string PreloadTime10 {
+            get {
+                return ResourceManager.GetString("PreloadTime10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2019-01-01 12:00:00.
+        /// </summary>
+        internal static string PreloadTime11 {
+            get {
+                return ResourceManager.GetString("PreloadTime11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PHP Analyse.
+        /// </summary>
+        internal static string PreloadTitle01 {
+            get {
+                return ResourceManager.GetString("PreloadTitle01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C Analtse.
+        /// </summary>
+        internal static string PreloadTitle02 {
+            get {
+                return ResourceManager.GetString("PreloadTitle02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C++ Analyse.
+        /// </summary>
+        internal static string PreloadTitle03 {
+            get {
+                return ResourceManager.GetString("PreloadTitle03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ruby Analyse.
+        /// </summary>
+        internal static string PreloadTitle04 {
+            get {
+                return ResourceManager.GetString("PreloadTitle04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pythin Analyse.
+        /// </summary>
+        internal static string PreloadTitle05 {
+            get {
+                return ResourceManager.GetString("PreloadTitle05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C# Analyse.
+        /// </summary>
+        internal static string PreloadTitle06 {
+            get {
+                return ResourceManager.GetString("PreloadTitle06", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to JavaScript Analyse.
+        /// </summary>
+        internal static string PreloadTitle07 {
+            get {
+                return ResourceManager.GetString("PreloadTitle07", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BOCOL Analyse.
+        /// </summary>
+        internal static string PreloadTitle08 {
+            get {
+                return ResourceManager.GetString("PreloadTitle08", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PowerShell Analyse.
+        /// </summary>
+        internal static string PreloadTitle09 {
+            get {
+                return ResourceManager.GetString("PreloadTitle09", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bash Analyse.
+        /// </summary>
+        internal static string PreloadTitle10 {
+            get {
+                return ResourceManager.GetString("PreloadTitle10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Haskell Analyse.
+        /// </summary>
+        internal static string PreloadTitle11 {
+            get {
+                return ResourceManager.GetString("PreloadTitle11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap setting {
@@ -247,6 +445,33 @@ namespace CodeAnalyzeWPF.Properties {
             get {
                 object obj = ResourceManager.GetObject("testmask", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 我不是.
+        /// </summary>
+        internal static string UPD01 {
+            get {
+                return ResourceManager.GetString("UPD01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 我没有.
+        /// </summary>
+        internal static string UPD02 {
+            get {
+                return ResourceManager.GetString("UPD02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 别瞎说.
+        /// </summary>
+        internal static string UPD03 {
+            get {
+                return ResourceManager.GetString("UPD03", resourceCulture);
             }
         }
     }
