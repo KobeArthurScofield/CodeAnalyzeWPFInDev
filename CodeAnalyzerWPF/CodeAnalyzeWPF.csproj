@@ -14,6 +14,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,12 +26,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetCulture>zh-CN</TargetCulture>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>1.0.45.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -41,6 +42,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <UseVSHostingProcess>true</UseVSHostingProcess>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -132,7 +134,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 和 x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -159,34 +161,43 @@
     <Resource Include="Resources\img_line_01.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\RZRC\1_a.jpg" />
+    <Resource Include="Resources\RZRC\1_a.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\RZRC\2_a.jpg" />
+    <Resource Include="Resources\RZRC\2_a.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\RZRC\3_a.jpg" />
+    <Resource Include="Resources\RZRC\3_a.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\RZRC\4_a.jpg" />
+    <Resource Include="Resources\RZRC\4_a.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\RZRC\5_a.jpg" />
+    <Resource Include="Resources\RZRC\5_a.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\RZRC\1_b.png" />
+    <Resource Include="Resources\RZRC\1_b.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\RZRC\2_b.png" />
+    <Resource Include="Resources\RZRC\2_b.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\RZRC\3_b.png" />
+    <Resource Include="Resources\RZRC\3_b.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\RZRC\4_b.png" />
+    <Resource Include="Resources\RZRC\4_b.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\RZRC\5_b.png" />
+    <Resource Include="Resources\RZRC\5_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\personmask.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\settingmask.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\testmask.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

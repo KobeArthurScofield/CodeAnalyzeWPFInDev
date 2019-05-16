@@ -163,4 +163,16 @@
   <data name="_5_b" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RZRC\5_b.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btn_upload_bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_upload_bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="personmask" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\personmask.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settingmask" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settingmask.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="testmask" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\testmask.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

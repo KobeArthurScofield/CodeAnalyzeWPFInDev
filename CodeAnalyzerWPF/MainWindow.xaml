@@ -5,122 +5,264 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CodeAnalyzeWPF"
         mc:Ignorable="d"
-        Title="测试工具客户端beta" Height="835" Width="1098" ResizeMode="CanMinimize" Background="#FFFAFAFA">
+        Title="测试工具客户端beta" Height="835" Width="1098" ResizeMode="CanMinimize" Background="#FFFAFAFA" Closing="MainWindowClosing">
+
     <Window.Resources>
-        <Style x:Key="ClipGrid" TargetType="{x:Type Grid}">
+        <Style x:Key="SideButton">
+            <Setter Property="Image.Height" Value="38"/>
+            <Setter Property="Image.Width" Value="38"/>
+            <Setter Property="Image.Stretch" Value="UniformToFill"/>
+            <Setter Property="Panel.ZIndex" Value="2"/>
+        </Style>
+        <Style x:Key="SideButtonMask">
+            <Setter Property="Image.Height" Value="38"/>
+            <Setter Property="Image.Width" Value="38"/>
+            <Setter Property="Image.Stretch" Value="UniformToFill"/>
+            <Setter Property="Panel.ZIndex" Value="3"/>
+        </Style>
+        <Style x:Key="WorkArea">
+            <Setter Property="Grid.Height" Value="806"/>
+            <Setter Property="Grid.Width" Value="1044"/>
+            <Setter Property="Grid.Margin" Value="0,0,0,0"/>
+            <Setter Property="Panel.ZIndex" Value="2"/>
+        </Style>
+        <Style x:Key="ItemBox">
+            <Setter Property="Grid.HorizontalAlignment" Value="Left"/>
+            <Setter Property="Grid.VerticalAlignment" Value="Top"/>
+            <Setter Property="Grid.Height" Value="150"/>
+            <Setter Property="Grid.Width" Value="314"/>
+            <Setter Property="Panel.ZIndex" Value="6"/>
+            <Setter Property="Grid.Background" Value="#FFFFFFFF"/>
+        </Style>
+        <Style x:Key="ItemBoxBorder">
+            <Setter Property="Border.BorderBrush" Value="#FF9B9B9B"/>
+            <Setter Property="Border.BorderThickness" Value="1"/>
+            <Setter Property="Border.Height" Value="150"/>
+            <Setter Property="Border.Width" Value="314"/>
+            <Setter Property="Panel.ZIndex" Value="6"/>
+        </Style>
+        <Style x:Key="ItemBoxTitle">
+            <Setter Property="TextBlock.Height" Value="29"/>
+            <Setter Property="TextBlock.Width" Value="295"/>
+            <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+            <Setter Property="TextBlock.FontSize" Value="22"/>
+            <Setter Property="TextBlock.Margin" Value="9,38,10,83"/>
+            <Setter Property="Panel.ZIndex" Value="6"/>
+        </Style>
+        <Style x:Key="ItemBoxModify">
+            <Setter Property="TextBlock.Height" Value="25"/>
+            <Setter Property="TextBlock.Width" Value="295"/>
+            <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+            <Setter Property="TextBlock.FontSize" Value="22"/>
+            <Setter Property="TextBlock.Margin" Value="9,94,10,31"/>
+            <Setter Property="TextBlock.Foreground" Value="Gray"/>
+            <Setter Property="Panel.ZIndex" Value="6"/>
+        </Style>
+        <Style x:Key="PageView">
+            <Setter Property="Grid.Height" Value="806"/>
+            <Setter Property="Grid.Width" Value="730"/>
+            <Setter Property="Panel.ZIndex" Value="4"/>
+        </Style>
+        <Style x:Key="TitleView">
+            <Setter Property="TextBlock.Height" Value="32"/>
+            <Setter Property="TextBlock.Width" Value="657"/>
+            <Setter Property="TextBlock.Margin" Value="51,24,22,750"/>
+            <Setter Property="TextBlock.FontSize" Value="22"/>
+            <Setter Property="TextBlock.TextTrimming" Value="CharacterEllipsis"/>
+            <Setter Property="TextBlock.Cursor" Value="IBeam"/>
+            <Setter Property="TextBox.Height" Value="32"/>
+            <Setter Property="TextBox.Width" Value="657"/>
+            <Setter Property="TextBox.Margin" Value="51,24,22,750"/>
+            <Setter Property="TextBox.FontSize" Value="22"/>
+            <Setter Property="TextBox.Background" Value="White"/>
+            <Setter Property="TextBox.TextWrapping" Value="NoWrap"/>
+        </Style>
+        <Style x:Key="CodeView">
+            <Setter Property="TextBox.Height" Value="625"/>
+            <Setter Property="TextBox.Width" Value="693"/>
+            <Setter Property="TextBox.Margin" Value="18,72,19,109"/>
+            <Setter Property="TextBox.TextWrapping" Value="NoWrap"/>
+            <Setter Property="TextBox.FontSize" Value="20"/>
+            <Setter Property="TextBox.AcceptsReturn" Value="True"/>
+            <Setter Property="TextBox.AcceptsTab" Value="True"/>
+            <Setter Property="TextBox.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="TextBox.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="TextBox.HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="TextBox.VerticalContentAlignment" Value="Top"/>
+            <Setter Property="Rectangle.Height" Value="625"/>
+            <Setter Property="Rectangle.Width" Value="693"/>
+            <Setter Property="Rectangle.Margin" Value="18,72,19,109"/>
+        </Style>
+        <Style x:Key="RzltHead">
+            <Setter Property="TextBlock.Height" Value="32"/>
+            <Setter Property="TextBlock.FontSize" Value="22"/>
+            <Setter Property="TextBlock.TextTrimming" Value="CharacterEllipsis"/>
+            <Setter Property="Panel.ZIndex" Value="5"/>
+        </Style>
+        <Style x:Key="RzltShow">
+            <Setter Property="Image.Height" Value="538"/>
+            <Setter Property="Image.Width" Value="314"/>
+            <Setter Property="Image.Stretch" Value="UniformToFill"/>
+            <Setter Property="Panel.ZIndex" Value="5"/>
+        </Style>
+        <Style x:Key="MainButton">
+            <Setter Property="Button.Width" Value="190"/>
+            <Setter Property="Button.Height" Value="54"/>
+            <Setter Property="Button.FontSize" Value="26"/>
+            <Setter Property="Button.Foreground" Value="White"/>
+            <Setter Property="Button.BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Button.Background">
+                <Setter.Value>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="Resources/btn_upload_bg.png"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Panel.ZIndex" Value="5"/>
+        </Style>
+        <Style x:Key="LSG">
+            <Setter Property="TextBlock.Height" Value="40"/>
+            <Setter Property="TextBlock.Width" Value="128"/>
+            <Setter Property="TextBlock.FontSize" Value="28"/>
+            <Setter Property="Panel.ZIndex" Value="3"/>
+        </Style>
+        <Style x:Key="LSGButton">
+            <Setter Property="Button.Height" Value="47"/>
+            <Setter Property="Button.Width" Value="141"/>
+            <Setter Property="Button.FontSize" Value="22"/>
+            <Setter Property="Panel.ZIndex" Value="3"/>
+        </Style>
+        <Style x:Key="LSGInter">
+            <Setter Property="Rectangle.Margin" Value="217,406,217,100"/>
+            <Setter Property="Rectangle.Height" Value="300"/>
+            <Setter Property="Rectangle.Width" Value="610"/>
+            <Setter Property="TextBox.Height" Value="300"/>
+            <Setter Property="TextBox.Width" Value="610"/>
+            <Setter Property="TextBox.Margin" Value="217,406,217,100"/>
+            <Setter Property="TextBox.Background" Value="#00000000"/>
+            <Setter Property="TextBox.FontSize" Value="28"/>
+            <Setter Property="TextBox.TextWrapping" Value="Wrap"/>
+            <Setter Property="TextBox.AcceptsReturn" Value="True"/>
+            <Setter Property="TextBox.AcceptsTab" Value="True"/>
+            <Setter Property="TextBox.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="TextBox.HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="TextBox.VerticalContentAlignment" Value="Top"/>
         </Style>
     </Window.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="366*"/>
-            <ColumnDefinition Width="23*"/>
-            <ColumnDefinition Width="703*"/>
-        </Grid.ColumnDefinitions>
-        <Grid HorizontalAlignment="Left" Height="804" VerticalAlignment="Top" Width="48" Background="#FF535353">
-            <Image x:Name="buttTest" HorizontalAlignment="Left" Height="38" VerticalAlignment="Bottom" Width="38" Margin="5,0,0,745" Panel.ZIndex="1" Stretch="UniformToFill" Source="Resources/test.png"/>
-            <Image x:Name="buttUser" HorizontalAlignment="Left" Height="38" VerticalAlignment="Bottom" Width="38" Margin="5,0,0,642" Panel.ZIndex="1" Stretch="UniformToFill" Source="Resources/person.png"/>
-            <Image x:Name="buttSetting" HorizontalAlignment="Left" Height="38" VerticalAlignment="Bottom" Width="38" Margin="5,0,0,522" Panel.ZIndex="1" Stretch="UniformToFill" Source="Resources/setting.png"/>
 
+    <Grid Height="806" Width="1092" Panel.ZIndex="0">
+        <Grid Height="806" Width="48" Background="#FF535353" Margin="0,0,1044,0" Panel.ZIndex="1">
+            <Image x:Name="buttTest" Style="{StaticResource SideButton}" Margin="5,23,5,745" Source="Resources/test.png" MouseUp="ButtTest"/>
+            <Image x:Name="buttTestMask" Style="{StaticResource SideButtonMask}" Margin="5,23,5,745" Source="Resources/testmask.png"/>
+            <Image x:Name="buttUser" Style="{StaticResource SideButton}" Margin="5,126,5,642" Source="Resources/person.png" MouseUp="ButtUser"/>
+            <Image x:Name="buttUserMask" Style="{StaticResource SideButtonMask}" Margin="5,126,5,642" Source="Resources/personmask.png"/>
+            <Image x:Name="buttSetting" Style="{StaticResource SideButton}" Margin="5,246,5,522" Source="Resources/setting.png" MouseUp="ButtSett"/>
+            <Image x:Name="buttSettingMask" Style="{StaticResource SideButtonMask}" Margin="5,246,5,522" Source="Resources/settingmask.png"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="1200" Margin="48,0,0,-394.4" VerticalAlignment="Top" Width="314">
-            <ScrollViewer HorizontalAlignment="Left" Height="804" VerticalAlignment="Top" Width="314" VerticalScrollBarVisibility="Auto">
-                <Grid MinWidth="314" MinHeight="1000">
-                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Background="#FFF0F0F0">
-                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
-                        <TextBlock x:Name="DataTitle" HorizontalAlignment="Left" Height="29" Margin="9,23,0,0" TextWrapping="Wrap" Text="int函数检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
-                        <TextBlock x:Name="DataUpd" HorizontalAlignment="Left" Height="25" Margin="9,79,0,0" TextWrapping="Wrap" Text="2019/3/22 20:05:41" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
+        <Grid Height="806" Width="1044" Margin="48,0,0,0" Panel.ZIndex="1">
+            <Grid x:Name="CodeItc" Style="{StaticResource WorkArea}">
+                <Grid Height="806" Margin="0,0,730,0" Width="314" Panel.ZIndex="3">
+                    <ScrollViewer Height="806" Width="314" VerticalScrollBarVisibility="Auto" Panel.ZIndex="4">
+                        <Grid Width="314" MinHeight="806" Panel.ZIndex="5">
+                            <Grid Style="{StaticResource ItemBox}" Margin="0,0,0,0" x:Name="newitem" MouseUp="NewItemClick" MouseDown="MouseHovering">
+                                <Border Style="{StaticResource ItemBoxBorder}"/>
+                                <TextBlock Style="{StaticResource ItemBoxTitle}" Text="新物品"/>
+                                <TextBlock Style="{StaticResource ItemBoxModify}" Text="单击此处新建"/>
+                            </Grid>
+                            <Grid Style="{StaticResource ItemBox}" Margin="0,150,0,0" x:Name="tem01" MouseUp="ReadItem" MouseDown="MouseHovering">
+                                <Border Style="{StaticResource ItemBoxBorder}"/>
+                                <TextBlock x:Name="title01" Style="{StaticResource ItemBoxTitle}"/>
+                                <TextBlock x:Name="time01" Style="{StaticResource ItemBoxModify}"/>
+                            </Grid>
+                            <Grid Style="{StaticResource ItemBox}" Margin="0,300,0,0" x:Name="tem02" MouseUp="ReadItem" MouseDown="MouseHovering">
+                                <Border Style="{StaticResource ItemBoxBorder}"/>
+                                <TextBlock x:Name="title02" Style="{StaticResource ItemBoxTitle}"/>
+                                <TextBlock x:Name="time02" Style="{StaticResource ItemBoxModify}"/>
+                            </Grid>
+                            <Grid Style="{StaticResource ItemBox}" Margin="0,450,0,0" x:Name="tem03" MouseUp="ReadItem" MouseDown="MouseHovering">
+                                <Border Style="{StaticResource ItemBoxBorder}"/>
+                                <TextBlock x:Name="title03" Style="{StaticResource ItemBoxTitle}"/>
+                                <TextBlock x:Name="time03" Style="{StaticResource ItemBoxModify}"/>
+                            </Grid>
+                            <Grid Style="{StaticResource ItemBox}" Margin="0,600,0,0" x:Name="tem04" MouseUp="ReadItem" MouseDown="MouseHovering">
+                                <Border Style="{StaticResource ItemBoxBorder}"/>
+                                <TextBlock x:Name="title04" Style="{StaticResource ItemBoxTitle}"/>
+                                <TextBlock x:Name="time04" Style="{StaticResource ItemBoxModify}"/>
+                            </Grid>
+                            <Grid Style="{StaticResource ItemBox}" Margin="0,750,0,0" x:Name="tem05" MouseUp="ReadItem" MouseDown="MouseHovering">
+                                <Border Style="{StaticResource ItemBoxBorder}"/>
+                                <TextBlock x:Name="title05" Style="{StaticResource ItemBoxTitle}"/>
+                                <TextBlock x:Name="time05" Style="{StaticResource ItemBoxModify}"/>
+                            </Grid>
+                            <Grid Style="{StaticResource ItemBox}" Margin="0,900,0,0" x:Name="tem06" MouseUp="ReadItem" MouseDown="MouseHovering">
+                                <Border Style="{StaticResource ItemBoxBorder}"/>
+                                <TextBlock x:Name="title06" Style="{StaticResource ItemBoxTitle}"/>
+                                <TextBlock x:Name="time06" Style="{StaticResource ItemBoxModify}"/>
+                            </Grid>
+                            <Grid Style="{StaticResource ItemBox}" Margin="0,1050,0,0" x:Name="tem07" MouseUp="ReadItem" MouseDown="MouseHovering">
+                                <Border Style="{StaticResource ItemBoxBorder}"/>
+                                <TextBlock x:Name="title07" Style="{StaticResource ItemBoxTitle}"/>
+                                <TextBlock x:Name="time07" Style="{StaticResource ItemBoxModify}"/>
+                            </Grid>
+                            <Grid Style="{StaticResource ItemBox}" Margin="0,1200,0,0" x:Name="tem08" MouseUp="ReadItem" MouseDown="MouseHovering">
+                                <Border Style="{StaticResource ItemBoxBorder}"/>
+                                <TextBlock x:Name="title08" Style="{StaticResource ItemBoxTitle}"/>
+                                <TextBlock x:Name="time08" Style="{StaticResource ItemBoxModify}"/>
+                            </Grid>
+                            <Grid Style="{StaticResource ItemBox}" Margin="0,1350,0,0" x:Name="tem09" MouseUp="ReadItem" MouseDown="MouseHovering">
+                                <Border Style="{StaticResource ItemBoxBorder}"/>
+                                <TextBlock x:Name="title09" Style="{StaticResource ItemBoxTitle}"/>
+                                <TextBlock x:Name="time09" Style="{StaticResource ItemBoxModify}"/>
+                            </Grid>
+                            <Grid Style="{StaticResource ItemBox}" Margin="0,1500,0,0" x:Name="tem10" MouseUp="ReadItem" MouseDown="MouseHovering">
+                                <Border Style="{StaticResource ItemBoxBorder}"/>
+                                <TextBlock x:Name="title10" Style="{StaticResource ItemBoxTitle}"/>
+                                <TextBlock x:Name="time10" Style="{StaticResource ItemBoxModify}"/>
+                            </Grid>
+                            <Grid Style="{StaticResource ItemBox}" Margin="0,1650,0,0" x:Name="tem11" MouseUp="ReadItem" MouseDown="MouseHovering">
+                                <Border Style="{StaticResource ItemBoxBorder}"/>
+                                <TextBlock x:Name="title11" Style="{StaticResource ItemBoxTitle}"/>
+                                <TextBlock x:Name="time11" Style="{StaticResource ItemBoxModify}"/>
+                            </Grid>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+                <Grid Height="806" Margin="314,0,0,0" Width="730" Panel.ZIndex="3">
+                    <Grid x:Name="EditPage" Style="{StaticResource PageView}">
+                        <Image Margin="0,0,0,805" Height="1" Width="730" Source="Resources/img_line_01.png" Stretch="UniformToFill" Panel.ZIndex="5"/>
+                        <Image x:Name="ButtMerge" Height="26" Margin="15,26,689,754" Width="26" Stretch="UniformToFill" Source="Resources/merge.png" Panel.ZIndex="5" MouseUp="MergeChange"/>
+                        <TextBlock x:Name="BlockTitle_Hint" Style="{StaticResource TitleView}" Text="单击此处输入标题" Foreground="#FF7A7A7A" Panel.ZIndex="5"/>
+                        <TextBlock x:Name="BlockTitle" Style="{StaticResource TitleView}" Panel.ZIndex="6" Text="{Binding ElementName=BlockTitleEdit,Path=Text}" MouseUp="StartTitleEdit"/>
+                        <TextBox x:Name="BlockTitleEdit" Style="{StaticResource TitleView}" Panel.ZIndex="7" Text="{Binding ElementName=BlockTitle,Path=Text}" TextChanged="TitleChanging"/>
+                        <Rectangle Style="{StaticResource CodeView}" Fill="#FFF4F4F5" Stroke="Black" Panel.ZIndex="5"/>
+                        <TextBox x:Name="CodeContent_Hint" Style="{StaticResource CodeView}" Panel.ZIndex="6" Foreground="#FFA0A0A0" Text="请输入你的测试代码" Background="{x:Null}"/>
+                        <TextBox x:Name="CodeContent" Style="{StaticResource CodeView}" Panel.ZIndex="7" Background="{x:Null}" TextChanged="ContentChanging"/>
+                        <Button x:Name="buttLoad" Content="上传" Style="{StaticResource MainButton}" Margin="18,725,522,27" Click="ButtUpload_Click"/>
+                        <Button x:Name="buttAnalyze" Content="分析" Style="{StaticResource MainButton}" Margin="521,725,19,27" Click="ButtAnalyze"/>
                     </Grid>
-                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,120,0,0">
-                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
-                        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Height="29" Margin="9,22,0,0" TextWrapping="Wrap" Text="Python函数检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
-                        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Height="25" Margin="10,76,0,0" TextWrapping="Wrap" Text="2019/2/22 09:30:55" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
-                    </Grid>
-                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,240,0,0" Style="{DynamicResource ClipGrid}">
-                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
-                        <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Height="29" Margin="9,26,0,0" TextWrapping="Wrap" Text="python函数检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
-                        <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Height="25" Margin="10,76,0,0" TextWrapping="Wrap" Text="2019/2/18 19:30:50" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
-                    </Grid>
-                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,360,0,0">
-                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
-                        <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Height="29" Margin="10,26,0,0" TextWrapping="Wrap" Text="C# int函数检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
-                        <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Height="25" Margin="10,76,0,0" TextWrapping="Wrap" Text="2019/2/15 06:30:47" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
-                    </Grid>
-                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,480,0,0">
-                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
-                        <TextBlock x:Name="textBlock8" HorizontalAlignment="Left" Height="29" Margin="9,22,0,0" TextWrapping="Wrap" Text="C++ int函数检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
-                        <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Height="25" Margin="9,75,0,0" TextWrapping="Wrap" Text="2019/2/11 16:40:17" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
-                    </Grid>
-                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,600,0,0">
-                        <TextBlock x:Name="textBlock10" HorizontalAlignment="Left" Height="29" Margin="9,19,0,0" TextWrapping="Wrap" Text="C语言int函数检测" VerticalAlignment="Top" Width="295" FontSize="24"/>
-                        <TextBlock x:Name="textBlock11" HorizontalAlignment="Left" Height="25" Margin="10,76,0,0" TextWrapping="Wrap" Text="2019/2/11 16:40:10" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
-                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
-                    </Grid>
-                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,720,0,0">
-                        <TextBlock x:Name="textBlock12" HorizontalAlignment="Left" Height="29" Margin="9,17,0,0" TextWrapping="Wrap" Text="C语言main函数检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
-                        <TextBlock x:Name="textBlock13" HorizontalAlignment="Left" Height="25" Margin="9,65,0,0" TextWrapping="Wrap" Text="2019/2/08 14:40:30" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
-                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
-                    </Grid>
-                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,840,0,0">
-                        <TextBlock x:Name="textBlock14" HorizontalAlignment="Left" Height="29" Margin="9,17,0,0" TextWrapping="Wrap" Text="C++ main函数检测" VerticalAlignment="Top" Width="295" FontSize="24"/>
-                        <TextBlock x:Name="textBlock15" HorizontalAlignment="Left" Height="25" Margin="9,66,0,0" TextWrapping="Wrap" Text="2019/2/07 06:30:17" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
-                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
-                    </Grid>
-                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,960,0,0">
-                        <TextBlock x:Name="textBlock16" HorizontalAlignment="Left" Height="29" Margin="9,17,0,0" TextWrapping="Wrap" Text="C# Main函数检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
-                        <TextBlock x:Name="textBlock17" HorizontalAlignment="Left" Height="25" Margin="9,66,0,0" TextWrapping="Wrap" Text="2019/2/06 12:10:17" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
-                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
-                    </Grid>
-                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,1080,0,0">
-                        <TextBlock x:Name="textBlock18" HorizontalAlignment="Left" Height="29" Margin="9,17,0,0" TextWrapping="Wrap" Text="C++ wrap函数检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
-                        <TextBlock x:Name="textBlock19" HorizontalAlignment="Left" Height="25" Margin="9,66,0,0" TextWrapping="Wrap" Text="2019/2/05 11:50:10" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
-                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
-                    </Grid>
-                    <Grid HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314" Margin="0,1200,0,0">
-                        <TextBlock x:Name="textBlock20" HorizontalAlignment="Left" Height="29" Margin="9,17,0,0" TextWrapping="Wrap" Text="C++ mian函数重复检测" VerticalAlignment="Top" Width="295" FontSize="22"/>
-                        <TextBlock x:Name="textBlock21" HorizontalAlignment="Left" Height="25" Margin="9,66,0,0" TextWrapping="Wrap" Text="2019/2/03 10:00:10" VerticalAlignment="Top" Width="295" FontSize="22" Foreground="Gray"/>
-                        <Border BorderBrush="#FF9B9B9B" BorderThickness="1" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="314"/>
+                    <Grid x:Name="ResultPage" Style="{StaticResource PageView}">
+                        <TextBlock x:Name="Header" Style="{StaticResource RzltHead}" Margin="51,23,533,751" Width="146" Text="分析结果"/>
+                        <TextBlock x:Name="ProjectName" Style="{StaticResource RzltHead}" Margin="202,23,22,751" Width="506" Text="{Binding ElementName=BlockTitle,Path=Text}"/>
+                        <Image x:Name="CodePlay" Style="{StaticResource RzltShow}" Margin="15,123,401,145"/>
+                        <Image x:Name="AnalyzeRzlt" Style="{StaticResource RzltShow}" Margin="394,123,22,145"/>
+                        <Button x:Name="buttBack" Content="返回" Style="{StaticResource MainButton}" Margin="18,725,522,27" Click="ButtBack_Click"/>
+                        <Button x:Name="buttDownload" Content="下载" Style="{StaticResource MainButton}" Margin="521,724,19,27" Click="ButtDown_Click"/>
                     </Grid>
                 </Grid>
-            </ScrollViewer>
-        </Grid>
-        <Grid HorizontalAlignment="Left" Height="804" Margin="362,0,0,0" VerticalAlignment="Top" Width="730" Background="White" Grid.ColumnSpan="3">
-            <Grid x:Name="EditPage" Height="804" Width="730">
-                <Image x:Name="LineAdvr" HorizontalAlignment="Left" Height="1" VerticalAlignment="Top" Width="730" Source="Resources/img_line_01.png" Stretch="UniformToFill"/>
-                <Image x:Name="ButtMerge" HorizontalAlignment="Left" Height="26" Margin="15,26,0,0" VerticalAlignment="Top" Width="26" Stretch="UniformToFill" Source="Resources/merge.png"/>
-                <TextBlock x:Name="BlockTitle_Hint" HorizontalAlignment="Left" Height="32" Margin="51,23,0,0" VerticalAlignment="Top" Width="657" FontSize="22" TextTrimming="CharacterEllipsis" Cursor="IBeam" MouseDown="EditTitle" Text="int函数检测" Foreground="#FF7A7A7A" Panel.ZIndex="1"/>
-                <TextBlock x:Name="BlockTitle" HorizontalAlignment="Left" Height="32" Margin="51,23,0,0" VerticalAlignment="Top" Width="657" FontSize="22" TextTrimming="CharacterEllipsis" Cursor="IBeam" MouseDown="EditTitle" Panel.ZIndex="2"/>
-                <TextBox x:Name="BlockTitleEdit" HorizontalAlignment="Left" Height="32" Margin="51,23,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="657" FontSize="22" Panel.ZIndex="3" LostFocus="TitleEditCompleted" TextChanged="BlockTitleEdit_TextChanged" Background="White" Visibility="Hidden" KeyUp="KeyChecker"/>
-                <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="625" Margin="15,72,0,0" Stroke="Black" VerticalAlignment="Top" Width="693"/>
-                <TextBox x:Name="CodeContent_Hint" HorizontalAlignment="Left" Height="625" Margin="15,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="693" AutomationProperties.HelpText="Text here" Panel.ZIndex="1" Foreground="#FFA0A0A0" Text="请输入你的测试代码" Background="{x:Null}" FontSize="20"/>
-                <TextBox x:Name="CodeContent" HorizontalAlignment="Left" Height="625" Margin="15,72,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="693" AutomationProperties.HelpText="Text here" Panel.ZIndex="2" Background="{x:Null}" TextChanged="CodeContent_TextChanged" LostFocus="EatenUp" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" FontSize="20"/>
-                <Button x:Name="buttLoad" Content="上传" HorizontalAlignment="Left" Height="54" Margin="15,724,0,0" VerticalAlignment="Top" Width="190" FontSize="26" Click="ButtLoad_Click" BorderBrush="{x:Null}" Foreground="White">
-                    <Button.Background>
-                        <ImageBrush ImageSource="Resources/btn_upload_bg.png" Stretch="UniformToFill"/>
-                    </Button.Background>
-                </Button>
-                <Button x:Name="buttAnalyze" Content="分析" HorizontalAlignment="Left" Height="54" Margin="518,724,0,0" VerticalAlignment="Top" Width="190" FontSize="26" AutomationProperties.AccessKey="A" BorderBrush="{x:Null}" Foreground="White" Click="ButtAnalyze_Click">
-                    <Button.Background>
-                        <ImageBrush Stretch="UniformToFill" ImageSource="Resources/btn_upload_bg.png"/>
-                    </Button.Background>
-                </Button>
             </Grid>
-            <Grid x:Name="ResultPage" Height="804" Width="730">
-                <TextBlock x:Name="Header" HorizontalAlignment="Left" Height="32" Margin="51,23,0,0" VerticalAlignment="Top" Width="146" FontSize="22" TextTrimming="CharacterEllipsis" Text="分析结果"/>
-                <TextBlock x:Name="ProjectName" HorizontalAlignment="Left" Height="32" Margin="202,23,0,0" VerticalAlignment="Top" Width="506" FontSize="22" TextTrimming="CharacterEllipsis" Panel.ZIndex="2"/>
-                <Image x:Name="CodePlay" HorizontalAlignment="Left" Height="538" Margin="15,123,0,0" VerticalAlignment="Top" Width="314" Stretch="UniformToFill"/>
-                <Image x:Name="AnalyzeRzlt" HorizontalAlignment="Left" Height="538" Margin="394,123,0,0" VerticalAlignment="Top" Width="314" Stretch="UniformToFill"/>
-                <Button x:Name="buttBack" Content="返回" HorizontalAlignment="Left" Height="54" Margin="15,724,0,0" VerticalAlignment="Top" Width="190" FontSize="26" BorderBrush="{x:Null}" Foreground="White">
-                    <Button.Background>
-                        <ImageBrush ImageSource="Resources/btn_upload_bg.png" Stretch="UniformToFill"/>
-                    </Button.Background>
-                </Button>
-                <Button x:Name="buttDownload" Content="下载" HorizontalAlignment="Left" Height="54" Margin="518,724,0,0" VerticalAlignment="Top" Width="190" FontSize="26" AutomationProperties.AccessKey="A" BorderBrush="{x:Null}" Foreground="White" Click="ButtDownload_Click">
-                    <Button.Background>
-                        <ImageBrush Stretch="UniformToFill" ImageSource="Resources/btn_upload_bg.png"/>
-                    </Button.Background>
-                </Button>
+            <Grid x:Name="LoginManager" Style="{StaticResource WorkArea}">
+                <TextBlock Margin="394,60,394,714" TextAlignment="Center" Height="32" Width="256" FontSize="28" Text="客户端更新日志" Panel.ZIndex="3"/>
+                <RichTextBox x:Name="UPDINF" Margin="73,132,73,131" Height="543" Width="898" FontSize="24" Panel.ZIndex="3"/>
+                <Button x:Name="ButtExit" Margin="427,724,427,28" Height="54" Width="190" Content="退出" FontSize="26" Background="#FFFF3300" Foreground="#FFFFFFFF" Panel.ZIndex="3" Click="ButtExit_Click"/>
             </Grid>
-            <!--Image x:Name="image2" Grid.Column="2" HorizontalAlignment="Left" Height="100" Margin="857.467,-59,-254.8,0" VerticalAlignment="Top" Width="100"/-->
+            <Grid x:Name="SettingManager" Style="{StaticResource WorkArea}">
+                <TextBlock Style="{StaticResource LSG}" Margin="356,144,560,622" Text="版本信息"/>
+                <TextBlock x:Name="VerCue" Style="{StaticResource LSG}" Margin="560,144,356,624" Foreground="#FF666666"/>
+                <Button x:Name="ButtCKUP" Content="检查更新" Style="{StaticResource LSGButton}" Margin="550,200,353,559" Background="#FFFFFFFF" Foreground="#FF000000" Click="ButtCkUp_Click"/>
+                <TextBlock Style="{StaticResource LSG}" Margin="356,356,560,410" Text="意见反馈"/>
+                <Button x:Name="ButtFeed" Content="反馈提交" Style="{StaticResource LSGButton}" Margin="550,350,353,405" Background="#FF3790E4" Foreground="#FFFFFFFF" Click="ButtFeed_Click"/>
+                <Rectangle Style="{StaticResource LSGInter}" Fill="#FFFFFFFF" Panel.ZIndex="3"/>
+                <TextBox x:Name="FeedbackHint" Style="{StaticResource LSGInter}" Foreground="#FFC9C9C9" Text="在此处键入反馈信息" Panel.ZIndex="4"/>
+                <TextBox x:Name="FeedbackText" Style="{StaticResource LSGInter}" Panel.ZIndex="5"/>
+            </Grid>
         </Grid>
     </Grid>
 </Window>

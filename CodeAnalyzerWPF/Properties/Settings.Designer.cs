@@ -22,5 +22,17 @@ namespace CodeAnalyzeWPF.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Demo {
+            get {
+                return ((bool)(this["Demo"]));
+            }
+            set {
+                this["Demo"] = value;
+            }
+        }
     }
 }
