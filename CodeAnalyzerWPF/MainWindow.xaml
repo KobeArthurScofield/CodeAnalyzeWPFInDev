@@ -93,12 +93,6 @@
             <Setter Property="Rectangle.Width" Value="693"/>
             <Setter Property="Rectangle.Margin" Value="18,72,19,109"/>
         </Style>
-        <Style x:Key="RzltHead">
-            <Setter Property="TextBlock.Height" Value="32"/>
-            <Setter Property="TextBlock.FontSize" Value="22"/>
-            <Setter Property="TextBlock.TextTrimming" Value="CharacterEllipsis"/>
-            <Setter Property="Panel.ZIndex" Value="5"/>
-        </Style>
         <Style x:Key="RzltShow">
             <Setter Property="Image.Height" Value="538"/>
             <Setter Property="Image.Width" Value="314"/>
@@ -239,8 +233,7 @@
                         <Button x:Name="buttAnalyze" Content="分析" Style="{StaticResource MainButton}" Margin="521,725,19,27" Click="ButtAnalyze"/>
                     </Grid>
                     <Grid x:Name="ResultPage" Style="{StaticResource PageView}">
-                        <TextBlock x:Name="Header" Style="{StaticResource RzltHead}" Margin="51,23,533,751" Width="146" Text="分析结果"/>
-                        <TextBlock x:Name="ProjectName" Style="{StaticResource RzltHead}" Margin="202,23,22,751" Width="506" Text="{Binding ElementName=BlockTitle,Path=Text}"/>
+                        <TextBlock x:Name="Header" Style="{StaticResource TitleView}" Text="分析结果"/>
                         <Image x:Name="CodePlay" Style="{StaticResource RzltShow}" Margin="15,123,401,145"/>
                         <Image x:Name="AnalyzeRzlt" Style="{StaticResource RzltShow}" Margin="394,123,22,145"/>
                         <Button x:Name="buttBack" Content="返回" Style="{StaticResource MainButton}" Margin="18,725,522,27" Click="ButtBack_Click"/>
@@ -252,12 +245,12 @@
                 <TextBlock Margin="394,60,394,714" TextAlignment="Center" Height="32" Width="256" FontSize="28" Text="客户端更新日志" Panel.ZIndex="3"/>
                 <RichTextBox x:Name="UPDINF" Margin="73,132,73,131" Height="543" Width="898" FontSize="24" Foreground="#FF666666" Panel.ZIndex="3">
                     <FlowDocument>
-                        <Paragraph Foreground="#FF000000">我不是</Paragraph>
-                        <Paragraph>我没有</Paragraph>
-                        <Paragraph>别瞎说</Paragraph>
+                        <Paragraph Foreground="#FF000000">2019年05月21日 系统更新，优化部分用户体验</Paragraph>
+                        <Paragraph>2019年05月02日 新增“文件输出位置”功能</Paragraph>
+                        <Paragraph>……</Paragraph>
                     </FlowDocument>
                 </RichTextBox>
-                <Button x:Name="ButtExit" Margin="427,724,427,28" Height="54" Width="190" Content="退出" FontSize="26" Background="#FFFF3300" Foreground="#FFFFFFFF" Panel.ZIndex="3" Click="ButtExit_Click"/>
+                <Button x:Name="ButtExit" Margin="427,724,427,28" Height="54" Width="190" Content="退出" FontSize="26" Background="#FF3790E4" Foreground="#FFFFFFFF" Panel.ZIndex="3" Click="ButtExit_Click"/>
             </Grid>
             <Grid x:Name="SettingManager" Style="{StaticResource WorkArea}">
                 <TextBlock Style="{StaticResource LSG}" Margin="356,144,560,622" Text="版本信息"/>
@@ -267,7 +260,7 @@
                 <Button x:Name="ButtFeed" Content="反馈提交" Style="{StaticResource LSGButton}" Margin="550,350,353,405" Background="#FF3790E4" Foreground="#FFFFFFFF" Click="ButtFeed_Click"/>
                 <Rectangle Style="{StaticResource LSGInter}" Fill="#FFFFFFFF" Panel.ZIndex="3"/>
                 <TextBox x:Name="FeedbackHint" Style="{StaticResource LSGInter}" Foreground="#FFC9C9C9" Text="在此处键入反馈信息" Panel.ZIndex="4"/>
-                <TextBox x:Name="FeedbackText" Style="{StaticResource LSGInter}" Panel.ZIndex="5"/>
+                <TextBox x:Name="FeedbackText" Style="{StaticResource LSGInter}" Panel.ZIndex="5" TextChanged="FeedbackText_TextChanged"/>
             </Grid>
         </Grid>
     </Grid>

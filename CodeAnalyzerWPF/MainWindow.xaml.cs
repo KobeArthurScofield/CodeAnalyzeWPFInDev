@@ -197,13 +197,6 @@ namespace CodeAnalyzeWPF
             Bone.ListUpdate(itemlist);
         }
 
-        private void InitUPD()
-        {
-            UPDINF.Document.Blocks.Clear();
-            Paragraph Upd01 = new Paragraph();
-            Paragraph Upd02 = new Paragraph();
-            Paragraph Upd03 = new Paragraph();
-        }
 
         private void ProjectListFlush()
         {
@@ -306,7 +299,6 @@ namespace CodeAnalyzeWPF
                     (FindName("tem" + Bone.EnumCodingToString(listindex, 2)) as Grid).Background = unselectcolour;
                 if (currentListHash == 0)
                     newitem.Background = unselectcolour;
-                listindex = itemlist[scitemidx].indexCode;
                 (sender as Grid).Background = selectedcolour;
                 currentListHash = itemlist[scitemidx].elementHash;
             }
@@ -437,15 +429,17 @@ namespace CodeAnalyzeWPF
 
         private void ButtDown_Click(object sender, RoutedEventArgs e)
         {
-            XCE.UnderConstruction();
             Microsoft.Win32.SaveFileDialog savediag = new Microsoft.Win32.SaveFileDialog();
             savediag.Filter = "JPEG File|*.jpg";
             savediag.RestoreDirectory = false;
             if (savediag.ShowDialog().Value)
             {
-                //string filepath1 = savediag.FileName;
-                //string filepath2 = (filepath1.Split('.'))[0] + "_Flow.jpg";
-                XCE.UnderConstruction();
+                string filepath1 = savediag.FileName;
+                string filepath2 = (filepath1.Split('.'))[0] + "_Flow.png";
+                string serial = Bone.EnumCodingToString(itemlist[Bone.ReadItemIndexInStorage(itemlist, currentListHash)].imgId, 1);
+                System.IO.File.Copy("./Resources/RZRC/" + serial + "_a.jpg", filepath1);
+                System.IO.File.Copy("./Resources/RZRC/" + serial + "_b.png", filepath2);
+                MessageBox.Show("已存储至\n" + filepath1 + "\n" + filepath2, "保存完成", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -472,7 +466,7 @@ namespace CodeAnalyzeWPF
 
         private void ButtFeed_Click(object sender, RoutedEventArgs e)
         {
-            XCE.UnderConstruction();
+            MessageBox.Show("是否提交？", "提交确认", MessageBoxButton.YesNo, MessageBoxImage.Question);
         }
 
         private void ButtTest(object sender, MouseButtonEventArgs e)
@@ -517,6 +511,14 @@ namespace CodeAnalyzeWPF
         private void MainWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             ButtExit_Click(sender, null);
+        }
+
+        private void FeedbackText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (FeedbackText.Text != "")
+                FeedbackHint.Visibility = Visibility.Collapsed;
+            else
+                FeedbackHint.Visibility = Visibility.Visible;
         }
     }
 }
